@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
     private final ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
 
 
+
     @Override
     public void robotInit() {
         // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
@@ -59,11 +60,17 @@ public class Robot extends TimedRobot {
          * Declare Smart Dashboard (Shuffleboard) code for interaction
          */
 
-        SmartDashboard.putNumber("Red", detectedColor.red);
-        SmartDashboard.putNumber("Green", detectedColor.green);
-        SmartDashboard.putNumber("Blue", detectedColor.blue);
+        SmartDashboard.putNumber("Red", detectedColor.red * 100);
+        SmartDashboard.putNumber("Green", detectedColor.green * 100);
+        SmartDashboard.putNumber("Blue", detectedColor.blue * 100);
         SmartDashboard.putNumber("IR", IR);
         SmartDashboard.putNumber("Proximity", proximity);
+
+        /**
+         * Define an array with all above colors and put them into one variable
+         */
+        double rgb[] = {detectedColor.red, detectedColor.green, detectedColor.blue};
+        SmartDashboard.putNumberArray("RGB", rgb);
 
     }
 
