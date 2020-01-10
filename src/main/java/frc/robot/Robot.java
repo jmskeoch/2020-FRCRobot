@@ -51,6 +51,7 @@ public class Robot extends TimedRobot {
          * Create infrared light variable in case it is necessary later
          * Declare proximity values to determine when it is safe for color detection
          */
+
         Color detectedColor = colorSensor.getColor();
         double IR = colorSensor.getIR();
         int proximity = colorSensor.getProximity();
@@ -60,17 +61,22 @@ public class Robot extends TimedRobot {
          * Declare Smart Dashboard (Shuffleboard) code for interaction
          */
 
-        SmartDashboard.putNumber("Red", detectedColor.red * 100);
-        SmartDashboard.putNumber("Green", detectedColor.green * 100);
-        SmartDashboard.putNumber("Blue", detectedColor.blue * 100);
+
+        SmartDashboard.putNumber("Red", detectedColor.red * 255);
+        SmartDashboard.putNumber("Green", detectedColor.green * 255);
+        SmartDashboard.putNumber("Blue", detectedColor.blue * 255);
         SmartDashboard.putNumber("IR", IR);
         SmartDashboard.putNumber("Proximity", proximity);
+
 
         /**
          * Define an array with all above colors and put them into one variable
          */
         double rgb[] = {detectedColor.red, detectedColor.green, detectedColor.blue};
-        SmartDashboard.putNumberArray("RGB", rgb);
+        SmartDashboard.putNumberArray("RGB Array", rgb);
+
+
+
 
     }
 
